@@ -1,0 +1,12 @@
+# Need to upgrade toolchains_llvm to get this working.
+common --noenable_bzlmod
+
+# https://github.com/bazelbuild/rules_foreign_cc/issues/1129
+# https://github.com/bazelbuild/bazel/issues/21215
+common --noincompatible_sandbox_hermetic_tmp
+
+common --repo_env=BAZEL_DO_NOT_DETECT_CPP_TOOLCHAIN=1
+
+# Workaround for https://github.com/bazelbuild/bazel/issues/20965, fixed in 7.1.0.
+# This workaround has a minor performance impact.
+common --experimental_sandbox_async_tree_delete_idle_threads=0
