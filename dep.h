@@ -3,6 +3,8 @@
 
 #include "transitive.h"
 
-inline int dep_return42() { return transitive_return42(); }
+int dep_return42();
+
+inline int dep_return42_inline() { return transitive_return42(); }
 
 #endif // DEP_H_

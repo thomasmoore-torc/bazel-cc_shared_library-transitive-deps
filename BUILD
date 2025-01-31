@@ -14,11 +14,24 @@ cc_library(
     name = "transitive",
     srcs = ["transitive.cc"],
     hdrs = ["transitive.h"],
+    implementation_deps = [":private"],
 )
 
 cc_shared_library(
     name = "transitive_shared",
+    dynamic_deps = [":private_shared"],
     deps = [":transitive"],
+)
+
+cc_library(
+    name = "private",
+    srcs = ["private.cc"],
+    hdrs = ["private.h"],
+)
+
+cc_shared_library(
+    name = "private_shared",
+    deps = [":private"],
 )
 
 cc_binary(
